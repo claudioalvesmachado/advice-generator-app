@@ -1,11 +1,92 @@
 @import "./variables";
+@import "./breakpoints";
 
+body {
+    font-family: $ff-default;
+}
+
+main {
+    display: grid;
+    place-items: center;
+    min-height: 100vh;
+    background-color: $clr-neutral-700;
+    padding: 0 1.6rem;
+}
+
+.advice {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 2.4rem;
+    padding: 4.4rem 2.4rem 7.2rem;
+    width: min(100%, 54rem);
+    border-radius: 1.6rem;
+    font-size: $fs-400;
+    text-align: center;
+    color: $clr-secondary;
+    background-color: $clr-neutral-500;
+
+    @include breakpoint(medium-up) {
+        padding: initial 4.8rem;
+    }
+
+    &__id {
+        color: $clr-primary;
+        font-size: $fs-300;
+        text-transform: uppercase;
+        letter-spacing: 0.4rem;
+    }
+
+    &__divider {
+        width: 100%;
+        height: 1.6rem;
+        background-image: url("../../assets/img/pattern-divider-mobile.svg");
+        background-repeat: no-repeat;
+        background-position: center;
+
+        @include breakpoint(medium-up) {
+            background-image: url("../../assets/img/pattern-divider-desktop.svg");
+            margin-top: 1.6rem;
+        }
+    }
+
+    &__dice {
+        position: absolute;
+        top: calc(100% - ($icon-size / 2));
+        align-self: center;
+        width: $icon-size;
+        height: $icon-size;
+        border-radius: 50%;
+        background-color: $clr-primary;
+        background-image: url("../../assets/img/icon-dice.svg");
+        background-repeat: no-repeat;
+        background-position: center center;
+        cursor: pointer;
+        
+        
+        &:hover {
+            box-shadow: 0 0 3.2rem $clr-primary;
+            transition: all 0.3s;
+        }
+    }
+}
 
 .attribution {
+    position: absolute;
+    bottom: 1.6rem;
     font-size: 1.1rem;
     text-align: center;
+    color: $clr-secondary;
 
     & a {
-        color: hsl(228, 45%, 44%);
+        color: $clr-neutral-400;
+        text-decoration: none;
+
+        &:hover {
+            color: $clr-primary;
+            text-decoration: underline;
+            text-shadow: 0 0 0.4rem $clr-primary;
+            transition: all 0.3s;
+        }
     }
 }
